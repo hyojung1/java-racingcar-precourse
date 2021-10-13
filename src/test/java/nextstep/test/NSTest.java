@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
 public abstract class NSTest {
-    private static final Duration TEST_TIMEOUT = Duration.ofSeconds(1L);
+    private static final Duration TEST_TIMEOUT = Duration.ofSeconds(10L);
 
     private PrintStream standardOut;
     private OutputStream captor;
@@ -50,7 +50,7 @@ public abstract class NSTest {
      * @param args
      */
     protected void runNoLineFound(final String... args) {
-        assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(
                 () -> subject(args)
         );
     }
